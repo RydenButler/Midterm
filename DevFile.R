@@ -17,17 +17,19 @@ document(Current)
 # Create trial Rasch object
 testRasch <- new('Rasch', 
                  name = 'Me', 
-                 a = rep(0, 10), 
-                 y = c(rep(0,5), rep(1,5)))
+                 a = c(-3, -2, -1, 0, 1, 2, 3), 
+                 y = c(1, 1, 1, 1, 0, 1, 0))
 # try probability
 probability(testRasch, 1)
 # try probability with vector of thetas - !!! should trigger error !!!
 probability(testRasch, 1:3)
 # try likelihood
-likelihood(testRasch, 1)
+likelihood(testRasch, 2)
 # try prior
 prior(1)
 # try prior with vector of thetas - !!! should trigger error !!!
 prior(testRasch, 1:3)
 # try eap
-eap(testRasch, -6, 6)
+eap(testRasch)
+# try plot
+plot(testRasch)

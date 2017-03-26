@@ -39,6 +39,6 @@ setMethod(f = 'eap',
               return(unlist(VectorLikelihood(raschObj, theta))*unlist(VectorPrior(theta)))
             }
             # Integrates posterior over specified range
-            return(integrate(f = posterior, lower = lower, upper = upper))
+            return(integrate(f = posterior, lower = lower, upper = upper)$value)
           }
           )
