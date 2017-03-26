@@ -28,10 +28,17 @@ setGeneric(name = 'eap',
 #' @export
 setMethod(f = 'eap',
           definition = function(raschObj, lower = -6, upper = 6) {
+            # Allows likelihood and prior to undergo vectorized calculations
+            # This is only allowable in eap(), as integrate requires vectorization
+            # Elsewhere the user is restricted from attempting vectorized operations
             VectorLikelihood <- Vectorize(likelihood, 'theta', SIMPLIFY = F)
+            VectorPrior <- Vectorize(prior, 'theta', SIMPLIFY = F)
+            # Create function for integrate that is only a function of theta
             posterior <- function(theta) {
-              return(unlist(VectorLikelihood(raschObj, theta))*prior(theta)$pi)
+              # Multiplies and returns posterior values
+              return(unlist(VectorLikelihood(raschObj, theta))*unlist(VectorPrior(theta)))
             }
+            # Integrates posterior over specified range
             return(integrate(f = posterior, lower = lower, upper = upper))
           }
           )

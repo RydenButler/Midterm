@@ -9,17 +9,25 @@ setwd("~/Dropbox/Courses/Semester4/R/Midterm")
 #### package.skeleton('easyRasch')
 # Provided only for transparency
 
+# Compile latest package and re-document
 Current <- as.package('easyRasch')
 load_all(Current)
 document(Current)
 
-
+# Create trial Rasch object
 testRasch <- new('Rasch', 
                  name = 'Me', 
                  a = rep(0, 10), 
                  y = c(rep(0,5), rep(1,5)))
+# try probability
 probability(testRasch, 1)
+# try probability with vector of thetas - !!! should trigger error !!!
 probability(testRasch, 1:3)
+# try likelihood
 likelihood(testRasch, 1)
+# try prior
 prior(1)
+# try prior with vector of thetas - !!! should trigger error !!!
+prior(testRasch, 1:3)
+# try eap
 eap(testRasch, -6, 6)

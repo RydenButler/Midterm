@@ -25,6 +25,9 @@ setGeneric(name = 'prior',
 #' @export
 setMethod(f = 'prior',
           definition = function(theta, ...) {
+            # Throw error if user attempts to enter vector of proposed thetas
+            if(length(theta) > 1) stop(' prior() is not vectorized. \nInput only one proposed value of theta.')
+            # Return list of one element, pi, containing a single numeric scalar
             return(list(pi = dnorm(x = theta, mean = 0, sd = 3)))
           }
           )

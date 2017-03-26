@@ -28,13 +28,21 @@ setGeneric(name = 'probability',
 #' @export
 setMethod(f = 'probability',
           definition = function(raschObj, theta) {
+            # Throw error if user attempts to enter vector of proposed thetas
             if(length(theta) > 1) stop(' probability() is not vectorized. \nInput only one proposed value of theta.')
+            # Calculate numerator
             Numerator <- exp(theta - raschObj@a)
+            # Calculate probability
             P <- Numerator/(1 + Numerator)
+            # Calculate inverse probability
             Q <- 1 - P
+            # Note which responses are incorrect
             Wrongs <- which(raschObj@y == 0)
+            # Create object of mixed Ps and Qs by first copying P...
             Mixed <- P
+            # ... and then overwriting wrong answers with Q
             Mixed[Wrongs] <- Q[Wrongs]
+            # Return list of results, P and mixed Ps and Qs
             return(list(P = P, Mixed = Mixed))
           }
           )

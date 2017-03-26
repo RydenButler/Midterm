@@ -26,6 +26,7 @@ setGeneric(name = 'likelihood',
 #' @export
 setMethod(f = 'likelihood',
           definition = function(raschObj, theta, ...) {
+            # Products the mixed probability vector (of Ps and Qs) from probability
             return(list(L = prod(probability(raschObj, theta)$Mixed)))
           }
           )
