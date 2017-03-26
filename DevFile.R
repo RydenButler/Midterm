@@ -16,3 +16,4 @@ document(Current)
 
 testRasch <- new('Rasch', name = 'Me', a = rep(0, 10), y = sample(c(0,1), 10, T))
 probability(testRasch, rep(1,10))
+likelihood(testRasch, rep(1,10))
