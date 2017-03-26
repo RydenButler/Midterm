@@ -6,8 +6,7 @@
 #' @param raschObj An object of class \code{Rasch}
 #' @param theta A proposed value of theta
 #' 
-#' @return A list with one element
-#'  \item{L}{The calculated likelihood}
+#' @return A numeric scalar indicating the likelihood of theta
 #'  
 #'  @author Ryden W. Butler: \email{r.butler@@wustl.edu}
 #'  @examples 
@@ -27,6 +26,6 @@ setGeneric(name = 'likelihood',
 setMethod(f = 'likelihood',
           definition = function(raschObj, theta, ...) {
             # Products the mixed probability vector (of Ps and Qs) from probability
-            return(list(L = prod(probability(raschObj, theta)$Mixed)))
+            return(prod(probability(raschObj, theta)$Mixed))
           }
           )

@@ -12,8 +12,7 @@ likelihood(raschObj, theta, ...)
 \item{theta}{A proposed value of theta}
 }
 \value{
-A list with one element
- \item{L}{The calculated likelihood}
+A numeric scalar indicating the likelihood of theta
  
  @author Ryden W. Butler: \email{r.butler@wustl.edu}
  @examples 

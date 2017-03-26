@@ -10,8 +10,7 @@ prior(theta, ...)
 \item{theta}{A proposed value of theta}
 }
 \value{
-A list with one element
- \item{pi}{The height of the specified normal curve evaluated at theta}
+A numeric scalar indicating the height of the normal curve at the quantile of theta
  
  @author Ryden W. Butler: \email{r.butler@wustl.edu}
  @examples 

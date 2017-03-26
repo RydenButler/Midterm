@@ -6,8 +6,7 @@
 #' 
 #' @param theta A proposed value of theta
 #' 
-#' @return A list with one element
-#'  \item{pi}{The height of the specified normal curve evaluated at theta}
+#' @return A numeric scalar indicating the height of the normal curve at the quantile of theta
 #'  
 #'  @author Ryden W. Butler: \email{r.butler@@wustl.edu}
 #'  @examples 
@@ -28,6 +27,6 @@ setMethod(f = 'prior',
             # Throw error if user attempts to enter vector of proposed thetas
             if(length(theta) > 1) stop(' prior() is not vectorized. \nInput only one proposed value of theta.')
             # Return list of one element, pi, containing a single numeric scalar
-            return(list(pi = dnorm(x = theta, mean = 0, sd = 3)))
+            return(dnorm(x = theta, mean = 0, sd = 3))
           }
           )

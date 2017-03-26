@@ -26,6 +26,7 @@ setMethod(f = 'plot', signature = 'Rasch',
             Theta <- eap(raschObj)
             Wrongs <- which(raschObj@y == 0)
             
+            opar <- par()
             par(mfrow = c(2,4))
             tally <- 0
             for(i in raschObj@a){
@@ -33,7 +34,7 @@ setMethod(f = 'plot', signature = 'Rasch',
               ResponseFunction <- function(theta) {
                 return(exp(theta - i)/(1 + exp(theta - i)))
               }
-              plot(1, type = 'n', xlim = c(-6, 6), ylim = c(0, 1), axes = F,
+              plot(0.5, type = 'n', xlim = c(-6, 6), ylim = c(0, 1), axes = F,
                    xlab = 'Ability (theta)', ylab = 'Pr(Correct Answer)',
                    main = paste('Item', tally))
               axis(1, at = -6:6)
@@ -44,6 +45,7 @@ setMethod(f = 'plot', signature = 'Rasch',
               if(tally %in% Wrongs){
                 curve(ResponseFunction, add = T, col = 'red') 
               } else curve(ResponseFunction, add = T, col = 'green')
-              
             }
-          })
+            par(opar)
+          }
+          )
