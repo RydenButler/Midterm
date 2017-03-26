@@ -19,13 +19,13 @@
 #'  @aliases likelihood,ANY-method
 #'  @export
 setGeneric(name = 'likelihood',
-           def = function(raschObj, theta) {
+           def = function(raschObj, theta, ...) {
              standardGeneric('likelihood')
            }
            )
 #' @export
 setMethod(f = 'likelihood',
-          definition = function(raschObj, theta) {
+          definition = function(raschObj, theta, ...) {
             return(list(L = prod(probability(raschObj, theta)$Mixed)))
           }
           )

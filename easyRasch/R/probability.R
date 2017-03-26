@@ -28,6 +28,7 @@ setGeneric(name = 'probability',
 #' @export
 setMethod(f = 'probability',
           definition = function(raschObj, theta) {
+            if(length(theta) > 1) stop(' probability() is not vectorized. \nInput only one proposed value of theta.')
             Numerator <- exp(theta - raschObj@a)
             P <- Numerator/(1 + Numerator)
             Q <- 1 - P

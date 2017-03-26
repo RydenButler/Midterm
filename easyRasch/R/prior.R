@@ -18,13 +18,13 @@
 #'  @aliases prior,ANY-method
 #'  @export
 setGeneric(name = 'prior',
-           def = function(theta) {
+           def = function(theta, ...) {
              standardGeneric('prior')
            }
            )
 #' @export
 setMethod(f = 'prior',
-          definition = function(theta) {
+          definition = function(theta, ...) {
             return(list(pi = dnorm(x = theta, mean = 0, sd = 3)))
           }
           )

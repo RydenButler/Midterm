@@ -4,7 +4,7 @@
 \alias{likelihood}
 \title{Calculate likelihood for Rasch model}
 \usage{
-likelihood(raschObj, theta)
+likelihood(raschObj, theta, ...)
 }
 \arguments{
 \item{raschObj}{An object of class \code{Rasch}}

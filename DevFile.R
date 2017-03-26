@@ -14,6 +14,12 @@ load_all(Current)
 document(Current)
 
 
-testRasch <- new('Rasch', name = 'Me', a = rep(0, 10), y = sample(c(0,1), 10, T))
-probability(testRasch, rep(1,10))
-likelihood(testRasch, rep(1,10))
+testRasch <- new('Rasch', 
+                 name = 'Me', 
+                 a = rep(0, 10), 
+                 y = c(rep(0,5), rep(1,5)))
+probability(testRasch, 1)
+probability(testRasch, 1:3)
+likelihood(testRasch, 1)
+prior(1)
+eap(testRasch, -6, 6)
