@@ -35,4 +35,5 @@ setMethod(f = 'probability',
             Mixed <- P
             Mixed[Wrongs] <- Q[Wrongs]
             return(list(P = P, Mixed = Mixed))
-          })
+          }
+          )

@@ -27,4 +27,5 @@ setGeneric(name = 'likelihood',
 setMethod(f = 'likelihood',
           definition = function(raschObj, theta) {
             return(list(L = prod(probability(raschObj, theta)$Mixed)))
-          })
+          }
+          )
