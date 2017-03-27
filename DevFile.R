@@ -14,26 +14,41 @@ Current <- as.package('easyRasch')
 load_all(Current)
 document(Current)
 
-# Create trial Rasch object
+# Create Rasch object
 testRasch <- new('Rasch', 
                  name = 'Me', 
-                 a = c(0, 0, 0, 0, 0, 0, 0), 
+                 a = c(-3, -2, -1, 0, 1, 2, 3), 
                  y = c(1, 1, 1, 1, 0, 1, 0))
-# try probability
+# Check validation of uneven slot lengths - !!! should trigger error !!!
+badRasch <- new('Rasch',
+                name = 'Me',
+                a = 0,
+                y = c(0,1))
+# Check validation of non-binary y slot - !!! should trigger error !!!
+badRasch <- new('Rasch',
+                name = 'Me',
+                a = c(0, 0, 0),
+                y = c(0, 1, 2))
+# Check validation of non-character name slot - !!! should trigger error !!!
+badRasch <- new('Rasch',
+                name = 1,
+                a = 0,
+                y = c(0,1))
+# Try probability
 probability(testRasch, 1)
-# try probability with vector of thetas - !!! should trigger error !!!
+# Try probability with vector of thetas - !!! should trigger error !!!
 probability(testRasch, 1:3)
-# try likelihood
-likelihood(testRasch, 0)
-# try prior
+# Try likelihood
+likelihood(testRasch, 1)
+# Try prior
 prior(1)
-# try prior with vector of thetas - !!! should trigger error !!!
+# Try prior with vector of thetas - !!! should trigger error !!!
 prior(testRasch, 1:3)
-# try eap
+# Try eap
 eap(testRasch)
-# try plot
+# Try plot
 plot(testRasch)
-# try fisherInf
+# Try fisherInf
 fisherInf(testRasch, 0)
-# try testInf
+# Try testInf
 testInf(testRasch, c(-6,6))

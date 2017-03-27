@@ -1,10 +1,19 @@
 Package: easyRasch
 Type: Package
-Title: What the package does (short line)
+Title: Simple Rasch Model Calculator
 Version: 1.0
 Date: 2017-03-26
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Author: Ryden W. Butler
+Maintainer: Ryden W. Butler <r.butler@wustl.edu>
+Description: This is my answer to the midterm for Applied Statistical Computing
+License: This is Trump's America. Licenses are optional.
+Collate:
+  'Rasch-Class.R'
+  'probability.R'
+  'likelihood.R'
+  'prior.R'
+  'eap.R'
+  'fisherInf.R'
+  'testInf.R'
+  'plotRasch.R'
 RoxygenNote: 6.0.1

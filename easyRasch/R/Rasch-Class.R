@@ -11,7 +11,30 @@
 #' 
 #' @author Ryden W. Butler: \email{r.butler@@wustl.edu}
 #' @rdname Rasch
+
+# Write validation function for Rasch object
+examineRasch <- function(object) {
+  # Create empty object to store errors
+  Errors <- character()
+  # The slot classes are checked by validObject() by default
+  # I only need to add odd exceptions like those below
+  
+  # Check that y is in binary format
+  if(any(object@y > 1) | any(object@y < 0)) {
+    Message <- 'Slot y must only have answers input as correct (1) or incorrect (0)'
+    Errors <- c(Errors, Message)
+  }
+  # Check that each item has a correspoding difficulty and answer
+  if(length(object@a) != length(object@y)) {
+    Message <- 'Slots a and y must be of the same length'
+    Errors <- c(Errors, Message)
+  }
+  # Print errors if applicable
+  if(length(Errors) == 0) TRUE else Errors
+}
+
 #' @export
 setClass(Class = 'Rasch',
-         slots = c(name = 'character', a = 'numeric', y = 'numeric')
+         slots = c(name = 'character', a = 'numeric', y = 'numeric'),
+         validity = examineRasch
          )

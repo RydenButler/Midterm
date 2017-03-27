@@ -25,16 +25,24 @@ setGeneric(name = 'testInf',
 #' @export
 setMethod(f = 'testInf',
           definition = function(raschObj, thetaLim = c(-3, 3)) {
+            # fisherInf is not vectorized for users to input multiple thetas. 
+            # Therefore I vectorize it for efficiency here alone
             VectorFishInf <- Vectorize(fisherInf, 'theta', SIMPLIFY = F)
-            EvaluateAt <- seq(from = thetaLim[1], to = thetaLim[2], by = 0.001)
+            # Specify large number of points to evaluate theta
+            EvaluateAt <- seq(from = thetaLim[1], to = thetaLim[2], by = 0.01)
+            # Generate vectorized output of fisherInfs in list
             InfoList <- VectorFishInf(raschObj, EvaluateAt)
+            # Get test information at each theta
             TestInfos <- lapply(InfoList, sum)
+            # Plot empty window with labels
             plot(1, type = 'n', xlim = thetaLim, ylim = c(0,max(unlist(TestInfos))), 
-                 xlab = 'Ability (theta)', ylab = 'Test Information', axes = F, 
+                 xlab = expression(paste('Ability (', theta, ')')), ylab = 'Test Information', axes = F, 
                  main = 'Test Information Curve')
+            # Add axes
             axis(1, at = thetaLim[1]:thetaLim[2])
             axis(2, at = seq(from = 0, to = ceiling(max(unlist(TestInfos))), by = 0.5), 
                  las = 2)
+            # Add test information points along domain of thetas
             points(x = EvaluateAt, y = TestInfos, pch = 2, cex = 0.01)
           }
           )

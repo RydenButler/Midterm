@@ -35,9 +35,9 @@ setMethod(f = 'plot', signature = 'Rasch',
                 return(exp(theta - i)/(1 + exp(theta - i)))
               }
               plot(0.5, type = 'n', xlim = c(-6, 6), ylim = c(0, 1), axes = F,
-                   xlab = 'Ability (theta)', ylab = 'Pr(Correct Answer)',
-                   main = paste('Item', tally))
-              axis(1, at = -6:6)
+                   xlab = expression(paste('Ability (', theta, ')')),
+                   ylab = 'Pr(Correct Answer)', main = paste('Item', tally))
+              axis(1, at = seq(from = -6, to = 6, by = 2))
               axis(2, at = seq(from = 0, to = 1, by = 0.1), las = 2)
               if(showTheta == T) {
                 abline(v = Theta, lty = 2)
