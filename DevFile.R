@@ -16,17 +16,17 @@ document(Current)
 
 # Create Rasch object
 testRasch <- new('Rasch', 
-                 name = 'Me', 
+                 name = 'Ryden', 
                  a = c(-3, -2, -1, 0, 1, 2, 3), 
                  y = c(1, 1, 1, 1, 0, 1, 0))
 # Check validation of uneven slot lengths - !!! should trigger error !!!
 badRasch <- new('Rasch',
-                name = 'Me',
+                name = 'Ryden',
                 a = 0,
                 y = c(0,1))
 # Check validation of non-binary y slot - !!! should trigger error !!!
 badRasch <- new('Rasch',
-                name = 'Me',
+                name = 'Ryden',
                 a = c(0, 0, 0),
                 y = c(0, 1, 2))
 # Check validation of non-character name slot - !!! should trigger error !!!
@@ -51,4 +51,4 @@ plot(testRasch)
 # Try fisherInf
 fisherInf(testRasch, 0)
 # Try testInf
-testInf(testRasch, c(-6,6))
+testInf(testRasch, c(-10,10))

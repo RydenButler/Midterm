@@ -35,13 +35,13 @@ setMethod(f = 'testInf',
             # Get test information at each theta
             TestInfos <- lapply(InfoList, sum)
             # Plot empty window with labels
-            plot(1, type = 'n', xlim = thetaLim, ylim = c(0,max(unlist(TestInfos))), 
+            plot(1, type = 'n', xlim = thetaLim, ylim = c(0,max(unlist(TestInfos))+0.25), 
                  xlab = expression(paste('Ability (', theta, ')')), ylab = 'Test Information', axes = F, 
                  main = 'Test Information Curve')
             # Add axes
             axis(1, at = thetaLim[1]:thetaLim[2])
-            axis(2, at = seq(from = 0, to = ceiling(max(unlist(TestInfos))), by = 0.5), 
-                 las = 2)
+            axis(2, at = seq(from = 0, to = (ceiling(max(unlist(TestInfos)))+0.25), 
+                             by = 0.25), las = 2)
             # Add test information points along domain of thetas
             points(x = EvaluateAt, y = TestInfos, pch = 2, cex = 0.01)
           }
